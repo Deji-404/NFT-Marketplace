@@ -26,8 +26,11 @@ export default function CreatorDashboard() {
 
     const contract = new ethers.Contract(marketplaceAddress, NftMarketPlace.abi, signer)
     const data = await contract.fetchItemsListed()
-
+    console.log(data)
     const items = await Promise.all(data.map(async i => {
+      let tokenId = i.tokenId.toString()
+      console.log(tokenId)
+      if (tokenId < 1) return
       let tokenUri = await contract.tokenURI(i.tokenId)
       tokenUri = tokenUri.replace("https://ipfs.infura.io/ipfs/", "")
       let tokenUriUrl = `http://localhost:8080/cors/${tokenUri}`

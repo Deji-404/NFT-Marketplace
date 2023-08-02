@@ -136,7 +136,7 @@ contract NftMarketPlace is ERC721URIStorage {
 
         MarketItem[] memory items = new MarketItem[](itemsCount);
 
-        for (uint i=0; i<itemsCount; i++) {
+        for (uint i=0; i<totalItemCount; i++) {
             if(idToMarketItem[i + 1].owner == msg.sender) {
                 uint currentId = i + 1;
                 MarketItem storage currentItem = idToMarketItem[currentId];
@@ -161,7 +161,7 @@ contract NftMarketPlace is ERC721URIStorage {
 
         MarketItem[] memory items = new MarketItem[](itemsCount);
 
-        for (uint i=0; i<itemsCount; i++) {
+        for (uint i=0; i<totalItemsCount; i++) {
             if(idToMarketItem[i+1].seller == msg.sender){
                 uint currentId = i + 1;
                 MarketItem storage currentItem = idToMarketItem[currentId];

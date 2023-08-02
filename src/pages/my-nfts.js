@@ -34,7 +34,8 @@ export default function MyAssets () {
         
         const items = await Promise.all(data.map(async i => {
             const tokenURI = await marketPlaceContract.tokenURI(i.tokenId)
-            let tokenUri = tokenUri.replace("https://ipfs.infura.io/ipfs/", "")
+            console.log(tokenURI)
+            let tokenUri = tokenURI.replace("https://ipfs.infura.io/ipfs/", "")
             let tokenUriUrl = `http://localhost:8080/cors/${tokenUri}`
             let meta = await axios.get(tokenUriUrl)
             meta = meta.data.data
@@ -44,7 +45,7 @@ export default function MyAssets () {
               tokenId: i.tokenId.toNumber(),
               seller: i.seller,
               owner: i.owner,
-              image: meta.data.image,
+              image: meta.image,
               tokenURI
             }
             return item
