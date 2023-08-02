@@ -33,7 +33,7 @@ export default function CreatorDashboard() {
       if (tokenId < 1) return
       let tokenUri = await contract.tokenURI(i.tokenId)
       tokenUri = tokenUri.replace("https://ipfs.infura.io/ipfs/", "")
-      let tokenUriUrl = `http://localhost:8080/cors/${tokenUri}`
+      let tokenUriUrl = `https://moralis-server0.onrender.com/cors/${tokenUri}`
       let meta = await axios.get(tokenUriUrl)
       meta = meta.data.data
       console.log(meta)

@@ -36,7 +36,7 @@ export default function MyAssets () {
             const tokenURI = await marketPlaceContract.tokenURI(i.tokenId)
             console.log(tokenURI)
             let tokenUri = tokenURI.replace("https://ipfs.infura.io/ipfs/", "")
-            let tokenUriUrl = `http://localhost:8080/cors/${tokenUri}`
+            let tokenUriUrl = `https://moralis-server0.onrender.com/cors/${tokenUri}`
             let meta = await axios.get(tokenUriUrl)
             meta = meta.data.data
             let price = ethers.utils.formatUnits(i.price.toString(), 'ether')

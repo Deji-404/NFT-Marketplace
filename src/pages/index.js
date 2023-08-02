@@ -27,17 +27,17 @@ export default function Home() {
     const provider = new ethers.providers.JsonRpcProvider("https://polygon-mumbai.infura.io/v3/5d5bcb8c7db04586a4681e430a14452e")
     const contract = new ethers.Contract(marketplaceAddress, NftMarketPlace.abi, provider)
     const data = await contract.fetchMarketItems()
-    console.log(data)
     const items = await Promise.all(data.map(async (i) => {
       const tokenId = i.tokenId.toString()
       console.log(tokenId)
       if( tokenId != 0) {
         let tokenUri = await contract.tokenURI(i.tokenId)
         tokenUri = tokenUri.replace("https://ipfs.infura.io/ipfs/", "")
-        let tokenUriUrl = `http://localhost:8080/cors/${tokenUri}`
+        let tokenUriUrl = `https://moralis-server0.onrender.com/cors/${tokenUri}`
+        console.log(tokenUriUrl)
         let meta = await axios.get(tokenUriUrl)
         meta = meta.data.data
-
+        console.log(meta)
         let price = ethers.utils.formatUnits(i.price.toString(), 'ether')
         let item = {
           price,
