@@ -11,7 +11,7 @@ export default function App({ Component, pageProps }) {
             Home
           </Link>
           <Link href="/create-nft" className="mr-6 text-pink-500">
-            Sell NFT
+            Sell NFTs
           </Link>
           <Link href="/my-nfts" className="mr-6 text-pink-500">
             My NFTs
